@@ -1,0 +1,49 @@
+The codedoc plugin is directed at the display of large blocks of code.  Its basic syntax
+is:
+<codedoc code> 
+</codedoc>
+
+<codedoc file> 
+</codedoc>
+
+<codedoc toggle description> 
+</codedoc>
+
+The first two create code blocks of the type specified by the parameter -- code or file.
+
+The third creates an initially hidden code block which comes with a toggle button
+enabling the block to be opened and closed (i.e.displayed and hidden).  The description,
+which is a text string, describes the content of this block.
+
+So, a more complete syntax model would be:
+<codedoc code> 
+ <codedoc toggle description> 
+ </codedoc>
+ <codedoc toggle description> 
+ </codedoc>
+</codedoc>
+
+<codedoc file> 
+ <codedoc toggle description> 
+ </codedoc>
+ <codedoc toggle description> 
+ </codedoc>
+</codedoc>
+
+This nesting of the codedoc containers is limited to one level, that is you can't include a
+toggle inside another toggle.
+
+As of the present writing there are two forms for comment.  The first simply creates a timestamp
+for the file which contains the documented code:
+
+   ~~codedoc:timestamp~~
+
+The second allows for internal comments on the code:
+  ~~codedoc:comment~~             
+
+The comment can contain Dokuwiki internal links, for instance:
+  
+   Dokuwiki embeds [[:snippet]] filenames in HTML definition lists [[:definitions#def_1|see definitions]]
+
+As the above demonstrates, the links can contain references to internal link headings.
+
