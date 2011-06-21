@@ -1,5 +1,4 @@
-The codedoc plugin is directed at the display of large blocks of code.  Its basic syntax
-is:
+The codedoc plugin is directed at the display of large blocks of code.  Its basic syntax is:
 <codedoc code> 
 </codedoc>
 
@@ -45,5 +44,15 @@ The comment can contain Dokuwiki internal links, for instance:
   
    Dokuwiki embeds [[:snippet]] filenames in HTML definition lists [[:definitions#def_1|see definitions]]
 
-As the above demonstrates, the links can contain references to internal link headings.
+As the above demonstrates, the links can contain references to internal link headings.  
+
+If the comment contains a <br /> character, the comment will have the coment characters on
+separate lines as in:
+
+/*
+  comment
+**/
+
+Otherwise the comment appears on one line:  /* comment */
+
 

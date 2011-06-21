@@ -51,7 +51,8 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
                  $data = date("F d Y H:i:s.", filemtime(wikiFN($ID)));
             }
             else {
-
+                       $NL = '/* ';
+                       $ENDL = ' */'; 
                        $match = preg_replace_callback("/\[\[(.*?)\]\]/",        
                        create_function(
                        '$matches',
@@ -59,8 +60,11 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
                        return html_wikilink($elems[0],$elems[1]);'
                        ),
                        $match);
-
-                 $data = "/* $match */";
+                 if(strpos($match, '<br') || strpos($match, '<BR')) {
+                   $NL .= "\n";
+                   $ENDL = "\n**/";
+                 }
+                 $data = "$NL $match $ENDL";
             }
            
             
