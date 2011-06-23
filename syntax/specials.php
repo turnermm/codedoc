@@ -3,7 +3,7 @@
  * Plugin Now: Inserts a timestamp.
  * 
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     Christopher Smith <chris@jalakai.co.uk>
+ * @author     Myron Turner <tunermm02@shaw.ca>
  */
 
 // must be run within DokuWiki
@@ -19,12 +19,12 @@ require_once DOKU_PLUGIN.'syntax.php';
 class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
 
     function getInfo() {
-        return array('author' => 'me',
-                     'email'  => 'me@someplace.com',
-                     'date'   => '2005-07-28',
-                     'name'   => 'Now Plugin',
-                     'desc'   => 'Include the current date and time',
-                     'url'    => 'http://www.dokuwiki.org/plugin:tutorial');
+        return array('author' => 'Myron Turner',
+                     'email'  => 'tunermm02@shaw.ca',
+                     'date'   => '2011-06-2w',
+                     'name'   => 'codedoc_specials',
+                     'desc'   => 'insert commentary into code blocks',
+                     'url'    => 'http://www.dokuwiki.org/plugin:codedoc');
     }
 
     function getType() { return 'substition'; }
