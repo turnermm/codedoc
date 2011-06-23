@@ -43,7 +43,6 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
     }
  
     function handle($match, $state, $pos, &$handler){
-    //  $this->write_debug($match);
 
         switch ($state) {
 

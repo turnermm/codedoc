@@ -32,27 +32,39 @@ So, a more complete syntax model would be:
 This nesting of the codedoc containers is limited to one level, that is you can't include a
 toggle inside another toggle.
 
-As of the present writing there are two forms for comment.  The first simply creates a timestamp
-for the file which contains the documented code:
+There are three forms that support comments. 
+      ~~codedoc:timestamp~~
+      ~~codedoc:comment~~             
+      ~~codedoc:xref:anchor_name~~  
 
-   ~~codedoc:timestamp~~
+1. The first simply creates a timestamp for the file which contains the documented code:
 
-The second allows for internal comments on the code:
-  ~~codedoc:comment~~             
+2. The second allows for internal comments on the code. The comment can contain Dokuwiki
+internal links, for instance:
 
-The comment can contain Dokuwiki internal links, for instance:
-  
    Dokuwiki embeds [[:snippet]] filenames in HTML definition lists [[:definitions#def_1|see definitions]]
 
-As the above demonstrates, the links can contain references to internal link headings.  
+As the above demonstrates, the links can contain references to internal link headings. Wherever
+Dokiwiki creates a heading, it creates a named anchor. So this:
 
-If the comment contains a <br /> character, the comment will have the coment characters on
-separate lines as in:
+     ===== This is a Heading ===== 
+
+creates the following anchor:
+
+    <a name="this_is_a_heading" id="this_is_a_heading">This is a Heading</a>
+
+If the comment contains a <br /> character or takes up more than one line, the comment
+will have the coment characters on separate lines as in:
 
 /*
   comment
 **/
 
 Otherwise the comment appears on one line:  /* comment */
+
+3. The third creates named anchors which enable you to link to places on a page where there 
+are no Dokuwiki headings:
+     <a name="anchor_name">&nbsp;</a>
+
 
 

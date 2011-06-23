@@ -47,6 +47,11 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
        global $ID;
         if($mode == 'xhtml'){
             list($match, $state) = $data;
+            if(preg_match('/\s*xref:(.*)/i',$match,$matches)) {
+                 $renderer->doc .= '<a name="' . trim(strtolower($matches[1])) . '">&nbsp;</a>';
+                 return true;
+            }
+
             if($match == 'timestamp') {
                  $data = date("F d Y H:i:s.", filemtime(wikiFN($ID)));
             }
@@ -60,7 +65,7 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
                        return html_wikilink($elems[0],$elems[1]);'
                        ),
                        $match);
-                 if(strpos($match, '<br') || strpos($match, '<BR')) {
+                 if(strpos($match, '<br') || strpos($match, '<BR') || strpos($match, "\n")) {
                    $NL .= "\n";
                    $ENDL = "\n**/";
                  }
