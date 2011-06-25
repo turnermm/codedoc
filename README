@@ -32,6 +32,7 @@ So, a more complete syntax model would be:
 This nesting of the codedoc containers is limited to one level, that is you can't include a
 toggle inside another toggle.
 
+COMMENTS
 There are three forms that support comments. 
       ~~codedoc:timestamp~~
       ~~codedoc:comment~~             
@@ -65,6 +66,23 @@ Otherwise the comment appears on one line:  /* comment */
 3. The third creates named anchors which enable you to link to places on a page where there 
 are no Dokuwiki headings:
      <a name="anchor_name">&nbsp;</a>
+
+LITERALS
+
+   ~~codedoc:clean:text~~  
+
+In order to support links in codedoc comments, the codedoc plugin must accept Dokuwiki's 
+subtitution modes.  Most of these are the various types of links that Dokuwiki supports;
+in addition they include smileys, linebreaks (\\), acronyms and entities.  If any of these
+are included in a codedoc code block, Dokuwiki will make the appropriate substitution.  In
+order to prevent substitutions where you want the literal text to remain in place,
+the codedoc plugin uses its clean text syntax.  For instance, to prevent a smiley from
+being substituted for 
+         8-) 
+you would enter the following:
+     ~~codedoc:clean:8-)~~
+This is the equivalent of Dokuwiki's %%8-)%% syntax.
+
 
 
 

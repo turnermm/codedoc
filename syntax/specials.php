@@ -52,7 +52,12 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
                  return true;
             }
 
-            if($match == 'timestamp') {
+            if(preg_match('/\s*clean:(.*)/i',$match,$matches)) {
+                 $data = $matches[1];
+                 $class="codedoc_clean";
+            }
+
+            elseif($match == 'timestamp') {
                  $data = date("F d Y H:i:s.", filemtime(wikiFN($ID)));
             }
             else {
@@ -61,7 +66,7 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
                        $match = preg_replace_callback("/\[\[(.*?)\]\]/",        
                        create_function(
                        '$matches',
-                       '$elems = explode("|",$matches[1]);   
+                       '$elems = explode("|",$matches[1]);  
                        return html_wikilink($elems[0],$elems[1]);'
                        ),
                        $match);
@@ -70,12 +75,13 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
                    $ENDL = "\n**/";
                  }
                  $data = "$NL $match $ENDL";
+                 $class='codedoc_hilite';
             }
-           
-            
-            $renderer->doc .= '<span style="color:blue">' .$data . '</span>';
+            $renderer->doc .= '<span class="' . $class. '">' .$data . '</span>';       
             return true;
         }
         return false;
     }
 }
+
+
