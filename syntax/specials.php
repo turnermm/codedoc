@@ -60,6 +60,14 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
             elseif($match == 'timestamp') {
                  $data = date("F d Y H:i:s.", filemtime(wikiFN($ID)));
             }
+            elseif($match == 'user') {
+                 global $INFO;
+                 $userinfo = 	$INFO['userinfo'];
+                 if(isset($userinfo) && isset($userinfo['name'])) {
+				        $data = $userinfo['name'];
+                   }	
+                   else $data = "";				   
+            }
             else {
                        $NL = '/* ';
                        $ENDL = ' */'; 
