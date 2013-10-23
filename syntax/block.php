@@ -16,7 +16,7 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
             'date'   => '2011-07-1',
             'name'   => 'codedoc',
             'desc'   => 'code documenter',
-            'url'    => 'http://www.doluwiki.org/plugin:codedoc');
+            'url'    => 'http://www.dokuwiki.org/plugin:codedoc');
     } 
  
     function getType(){ return 'container'; }
