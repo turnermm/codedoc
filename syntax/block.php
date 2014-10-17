@@ -9,6 +9,7 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
     var $index = 0;
     var $last_id = 0;  
     var $last_header = "";  
+    var $geshi = false;
     function getInfo() {
         return array(
             'author' => 'Myron Turner',
@@ -70,6 +71,7 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
 
           switch ($state) {
             case DOKU_LEXER_ENTER :
+           
               $id = "";  
               if(preg_match('/^(toggle)(.*)/',$match, $matches)) {
                  if($matches[2]) {
@@ -88,12 +90,20 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
                 $this->last_id = ""; 
                 $this->last_header="";
               }
-              $renderer->doc .= '<pre ' . $id  . 'class="'.$match.'">';
+             if(strpos($match,':') != false) {                 
+                  list($match, $this->geshi) = explode(':',$match);          
+                  $match = "$match " . $this->geshi;                  
+             }
+             $renderer->doc .= '<pre ' . $id  . 'class="'.$match.'">';
               break;
   
             case DOKU_LEXER_UNMATCHED :
-             $renderer->doc .= $renderer->_xmlEntities($match);           
-              break;
+            if($this->geshi) {
+               $code = $renderer->_xmlEntities($match);           
+               $renderer->doc .= p_xhtml_cached_geshi($code, $this->geshi,'');
+            }
+             else $renderer->doc .= $renderer->_xmlEntities($match);           
+             break;
   
             case DOKU_LEXER_EXIT :
               $renderer->doc .= "</pre>";
