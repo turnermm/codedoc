@@ -10,15 +10,6 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
     var $last_id = 0;  
     var $last_header = "";  
     var $geshi = false;
-    function getInfo() {
-        return array(
-            'author' => 'Myron Turner',
-            'email'  => 'turnermm02@shaw.ca',
-            'date'   => '2011-07-1',
-            'name'   => 'codedoc',
-            'desc'   => 'code documenter',
-            'url'    => 'http://www.dokuwiki.org/plugin:codedoc');
-    } 
  
     function getType(){ return 'container'; }
     function getPType(){ return 'normal'; }

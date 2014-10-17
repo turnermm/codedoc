@@ -18,14 +18,6 @@ require_once DOKU_PLUGIN.'syntax.php';
  */
 class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
 
-    function getInfo() {
-        return array('author' => 'Myron Turner',
-                     'email'  => 'tunermm02@shaw.ca',
-                     'date'   => '2011-06-2w',
-                     'name'   => 'codedoc_specials',
-                     'desc'   => 'insert commentary into code blocks',
-                     'url'    => 'http://www.dokuwiki.org/plugin:codedoc');
-    }
 
     function getType() { return 'substition'; }
     function getSort() { return 32; }
