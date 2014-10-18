@@ -10,6 +10,7 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
     var $last_id = 0;  
     var $last_header = "";  
     var $geshi = false;
+    var $no_numbers = false;
  
     function getType(){ return 'container'; }
     function getPType(){ return 'normal'; }
@@ -40,6 +41,11 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
 
           case DOKU_LEXER_ENTER : 
             $type = strtolower(trim(substr($match,8,-1))); 
+            $type = str_replace('_no_numbers',"",$type,$count);
+            if($count) {
+               $type = trim($type);
+               $this->no_numbers =  true;
+            }
             
             return array($state, trim($type));          
  
@@ -76,7 +82,12 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
               if($this->last_id) {
                 $show_header ="";
                 $show_button = '<span class="codedoc_show" id="s_' . trim($this->last_id,'"') . '">show</span>';
-                if($this->last_header) $show_header = "[$this->index]$this->last_header";
+                if($this->last_header) {
+                    if($this->no_numbers) {
+                        $show_header = "$this->last_header";
+                    }
+                    else $show_header = "[$this->index]$this->last_header";
+                }    
                 $renderer->doc .= "\n$show_header <a href='javascript:codedoc_toggle($this->last_id);void 0;'>$show_button</a>";
                 $this->last_id = ""; 
                 $this->last_header="";
