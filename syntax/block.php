@@ -90,8 +90,7 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
   
             case DOKU_LEXER_UNMATCHED :
             if($this->geshi) {
-               $code = $renderer->_xmlEntities($match);           
-               $renderer->doc .= p_xhtml_cached_geshi($code, $this->geshi,'');
+               $renderer->doc .= p_xhtml_cached_geshi($match, $this->geshi,'');
             }
              else $renderer->doc .= $renderer->_xmlEntities($match);           
              break;
