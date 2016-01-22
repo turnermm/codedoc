@@ -34,7 +34,7 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addSpecialPattern('~~codedoc:.*?~~',$mode,'plugin_codedoc_specials');
     }
 
-    function handle($match, $state, $pos, &$handler) {
+    function handle($match, $state, $pos, Doku_Handler $handler) {
         $match = trim(substr($match,10,-2));   
         $type = strtolower($match); 
         if(trim($type) == 'timestamp') {  
@@ -43,7 +43,7 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
         return array($match,$state);
     }
     
-    function render($mode, &$renderer, $data) {
+    function render($mode, Doku_Renderer $renderer, $data) {
        global $ID;
         if($mode == 'xhtml'){
             list($match, $state) = $data;
