@@ -35,7 +35,7 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addExitPattern('</codetoggle>','plugin_codedoc_block');
     }
  
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
 
         switch ($state) {
 
@@ -60,7 +60,7 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
         }
     }
  
-    function render($mode, &$renderer, $data) {
+    function render($mode, Doku_Renderer $renderer, $data) {
 
         if($mode == 'xhtml'){
 
