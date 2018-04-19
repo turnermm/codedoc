@@ -60,8 +60,14 @@ will have the coment characters on separate lines as in:
 /*
   comment
 **/
-
 Otherwise the comment appears on one line:  /* comment */
+
+If the comment contains either and <em>  or a <b>, it will get highlighted coding as defined in
+the plugin's style.css file.  Currently, the colors will be red and the styling as either bold or
+italic.  The color can be anything you choose by making the change in style.css.  The style.css
+file also has the option to treat either the em or the b as normal text, by uncommenting
+the relevant element.  Useful for emphasizing single words or phrases inside a comment.
+
 
 3. The third creates named anchors which enable you to link to places on a page where there 
 are no Dokuwiki headings:

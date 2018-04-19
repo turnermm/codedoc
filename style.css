@@ -9,3 +9,8 @@ pre.toggle { display:none; margin-top:15px !important;  }
 
 .codedoc_hilite { color: blue; }
 .codedoc_clean { color: black; }
+em.codedoc_hilite, b.codedoc_hilite{ color: red;}
+/* em.codedoc_hilite { color: red; font-style:normal;} */
+/* b.codedoc_hilite { font-weight: normal;} */
+
+

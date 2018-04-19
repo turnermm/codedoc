@@ -74,6 +74,11 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
                    $NL .= "\n";
                    $ENDL = "\n**/";
                  }
+                 else if(preg_match("/<(em|b)/",$match)) {
+                     $NL = '';
+                    $ENDL = ''; 
+                    $match = preg_replace("/<(b|em|code)>/", "<$1 class = 'codedoc_hilite'>",$match);
+                 }
                  $data = "$NL $match $ENDL";
                  $class='codedoc_hilite';
             }
