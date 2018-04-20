@@ -13,7 +13,7 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
     var $no_numbers = false;
  
     function getType(){ return 'container'; }
-    function getPType(){ return 'normal'; }
+    function getPType(){ return 'block'; }
     function getAllowedTypes() { 
       return array('substition');
     }
