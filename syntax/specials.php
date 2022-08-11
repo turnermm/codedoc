@@ -64,11 +64,10 @@ class syntax_plugin_codedoc_specials extends DokuWiki_Syntax_Plugin {
                        $NL = '/* ';
                        $ENDL = ' */'; 
                        $match = preg_replace_callback("/\[\[(.*?)\]\]/",        
-                       create_function(
-                       '$matches',
-                       '$elems = explode("|",$matches[1]);  
-                       return html_wikilink($elems[0],$elems[1]);'
-                       ),
+                       function($matches){
+                       $elems = explode("|",$matches[1]);  
+                       return htmlentities(html_wikilink($elems[0],$elems[1]));
+                       },
                        $match);
                  if(strpos($match, '<br') || strpos($match, '<BR') || strpos($match, "\n")) {
                    $NL .= "\n";

@@ -49,8 +49,10 @@ class syntax_plugin_codedoc_block extends DokuWiki_Syntax_Plugin {
             
             return array($state, trim($type));          
  
-          case DOKU_LEXER_UNMATCHED :
-            return array($state, $match);
+         /* case DOKU_LEXER_UNMATCHED :
+            $match = str_replace('<','&lt;',$match);
+            $match = str_replace('>','&gt;',$match);
+            return array($state, $match); */
           case DOKU_LEXER_EXIT :            
              return array($state,$match);
 
