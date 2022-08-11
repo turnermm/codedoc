@@ -1,7 +1,7 @@
 base codedoc
 author Myron Turner
 email turnermm02@shaw.ca
-date 2018-04-20 
+date 2022-08-11
 name codedoc
 desc utility to display and document extended blocks of code
 url http://www.dokuwiki.org/plugin:codedoc
